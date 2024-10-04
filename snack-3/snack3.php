@@ -34,11 +34,13 @@
 <body>
     <main>
         <ul>
-            <?php for ( $i = 0; $i < count($db["teachers"]); $i++){ ?>
+            <?php for ( $i = 0; $i < count($db); $i++) {?>
+                
                 <li>
-                    <?= ?>
+                    <?= $db["teachers"]["name"] . $db["teachers"]["lastname"]?>
                 </li>
-            <?php}?>
+
+            <?php } ?>
 
             
         </ul>

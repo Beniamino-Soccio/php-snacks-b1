@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +11,7 @@
 </head>
 <body>
     <main>
-        <form action="snack2.php" method="GET" class="p-5">
+        <form action="reply2.php" method="GET" class="p-5">
         <div>
             <label for="userName" class="form-label">inserisci il tuo nome</label>
             <input type="text" class="form-control" id="userName" name="userName" placeholder="Beniamino">

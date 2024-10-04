@@ -11,14 +11,14 @@
 </head>
 <body>
     <main>
-        <form action="reply2.php" method="GET" class="p-5">
+        <form action="snack-2/reply2.php" method="GET" class="p-5">
         <div>
             <label for="userName" class="form-label">inserisci il tuo nome</label>
             <input type="text" class="form-control" id="userName" name="userName" placeholder="Beniamino">
         </div>
         <div>
             <label for="userMail" class="form-label">inserisci la tua email</label>
-            <input type="email" class="form-control" id="userMail" name="userMail" placeholder="Beniamino@gmail.com">
+            <input type="text" class="form-control" id="userMail" name="userMail" placeholder="Beniamino@gmail.com">
         </div>
         <div>
             <label for="userAge" class="form-label">inserisci la tua età</label>

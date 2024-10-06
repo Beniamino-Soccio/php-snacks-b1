@@ -236,6 +236,10 @@
             ],
         ],
     ];
+
+    //Snack 4B: Filtrare il nostro array e mostrare, sempre suddivisi per classe, esclusivamente gli studenti e le studentesse con voto medio sufficiente.
+
+
 ?>
 
 <!DOCTYPE html>
@@ -261,6 +265,22 @@
                         <p class="ms-3"><?= "Linguaggio preferito :" . $student["linguaggio_preferito"] ?></p>
                     </li>
                 </ul>
+            <?php } ?>
+        <?php } ?>
+        <h2 class="fw-bold fs-3 my-3">studenti con media sufficente</h2>
+        <?php foreach  ($classi as $singleClass => $listClass) { ?>
+            <h5> <?= $singleClass ?> </h5>
+            <?php foreach  ($listClass as $itemClass => $student) { ?>
+                <?php if ($student["voto_medio"] >= 6) { ?>
+                    <ul>
+                        <li>
+                            <p><?= "Nome :" . $student["nome"] ?> <?= $student["cognome"] ?></p>
+                            <p class="ms-3"><?= "Anni :" . $student["anni"] ?></p>
+                            <p class="ms-3"><?= "voto medio :" . $student["voto_medio"] ?></p>
+                            <p class="ms-3"><?= "Linguaggio preferito :" . $student["linguaggio_preferito"] ?></p>
+                        </li>
+                    </ul>
+                <?php } ?>
             <?php } ?>
         <?php } ?>
     </main>

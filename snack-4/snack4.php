@@ -240,17 +240,19 @@
     //Snack 4B: Filtrare il nostro array e mostrare, sempre suddivisi per classe, esclusivamente gli studenti e le studentesse con voto medio sufficiente.
 
 
-
-// if (isset($_GET["userGrade"])) {
-//     $filteredStudents = [];
-//     foreach ($classi as $singleClass => $listClass) {
-//         foreach  ($listClass as $itemClass => $student) {
-//             if($student["voto_medio"] <= $_GET["userGrade"]){
-//                 $filteredStudents = $student;
-//             }
-//         }
-//     } 
-// }
+$filteredStudents;
+if (isset($_GET["userGrade"])) {
+    $filteredStudents = [];
+    foreach ($classi as $singleClass => $listClass) {
+        foreach  ($listClass as $itemClass => $student) {
+            if($student["voto_medio"] <= $_GET["userGrade"]){
+                $filteredStudents = $student;
+            }  
+        }
+    }
+} else {
+    $filteredStudents = $classi; 
+}
 
 
 ?>
@@ -267,6 +269,7 @@
 <body>
     <main class="container">
         <h1 class="text-center fw-bold fs-3 mb-3">Snack 4</h1>
+
         <form action="snack4.php" method="GET" class="mb-3">
             <div class="mb-2">
                 <label for="userGrade" class="form-label">inserisci un voto da 1 a 10</label>
@@ -276,38 +279,24 @@
             <button type="submit" class="btn btn-sm btn-primary">Submit</button>
             <button type="reset" class="btn btn-sm btn-danger">Reset</button>
         </form>
-        <?php foreach  ($classi as $singleClass => $listClass) { ?>
+        
+        <?php foreach ($filteredStudents as $singleClass => $listClass) { ?>
             <h5> <?= $singleClass ?> </h5>
-            <?php if (isset($_GET["userGrade"])) { ?>
-                <?php foreach  ($listClass as $itemClass => $student) { ?>
-                    <?php if ($student["voto_medio"] <= $_GET["userGrade"]) { ?>
-                        <div class="card ms-3 mb-2" style="width: 18rem;">
-                            <div class="card-header">
-                                <p><?= "Nome :" . $student["nome"] ?> <?= $student["cognome"] ?></p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <p class="ms-3"><?= "Anni :" . $student["anni"] ?></p>
-                                <p class="ms-3"><?= "voto medio :" . $student["voto_medio"] ?></p>
-                                <p class="ms-3"><?= "Linguaggio preferito :" . $student["linguaggio_preferito"] ?></p>
-                            </ul>
-                        </div>
-                    <?php } ?>
-                <?php } ?>
-            <?php } else { ?>
-                <?php foreach  ($listClass as $itemClass => $student) { ?>
-                        <div class="card ms-3 mb-2" style="width: 18rem;">
-                            <div class="card-header">
-                                <p><?= "Nome :" . $student["nome"] ?> <?= $student["cognome"] ?></p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <p class="ms-3"><?= "Anni :" . $student["anni"] ?></p>
-                                <p class="ms-3"><?= "voto medio :" . $student["voto_medio"] ?></p>
-                                <p class="ms-3"><?= "Linguaggio preferito :" . $student["linguaggio_preferito"] ?></p>
-                            </ul>
-                        </div>
-                <?php } ?>
+            
+            <?php foreach ($listClass as $itemClass => $student) { ?>
+                <div class="card ms-3 mb-2" style="width: 18rem;">
+                    <div class="card-header">
+                        <p><?= "Nome :" . $student["nome"] ?> <?= $student["cognome"] ?></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <p class="ms-3"><?= "Anni :" . $student["anni"] ?></p>
+                        <p class="ms-3"><?= "voto medio :" . $student["voto_medio"] ?></p>
+                        <p class="ms-3"><?= "Linguaggio preferito :" . $student["linguaggio_preferito"] ?></p>
+                    </ul>
+                </div>
             <?php } ?>
         <?php } ?>
+        
         <!--
         <h2 class="fw-bold fs-3 my-3">studenti con media sufficente</h2>
         <?php foreach  ($classi as $singleClass => $listClass) { ?>

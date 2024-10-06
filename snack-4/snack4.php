@@ -254,19 +254,31 @@
 <body>
     <main class="container">
         <h1 class="text-center fw-bold fs-3 mb-3">Snack 4</h1>
+        <form action="snack4.php" method="GET" class="mb-3">
+            <div class="mb-2">
+                <label for="userGrade" class="form-label">inserisci un voto da 1 a 10</label>
+                <input type="number" class="form-control" id="userGrade" name="userGrade" min="1" max="10">
+            </div>
+            
+            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+            <button type="reset" class="btn btn-sm btn-danger">Reset</button>
+        </form>
         <?php foreach  ($classi as $singleClass => $listClass) { ?>
             <h5> <?= $singleClass ?> </h5>
             <?php foreach  ($listClass as $itemClass => $student) { ?>
-                <ul>
-                    <li>
+                <div class="card ms-3 mb-2" style="width: 18rem;">
+                    <div class="card-header">
                         <p><?= "Nome :" . $student["nome"] ?> <?= $student["cognome"] ?></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
                         <p class="ms-3"><?= "Anni :" . $student["anni"] ?></p>
                         <p class="ms-3"><?= "voto medio :" . $student["voto_medio"] ?></p>
                         <p class="ms-3"><?= "Linguaggio preferito :" . $student["linguaggio_preferito"] ?></p>
-                    </li>
-                </ul>
+                    </ul>
+                </div>
             <?php } ?>
         <?php } ?>
+        <!--
         <h2 class="fw-bold fs-3 my-3">studenti con media sufficente</h2>
         <?php foreach  ($classi as $singleClass => $listClass) { ?>
             <h5> <?= $singleClass ?> </h5>
@@ -283,7 +295,10 @@
                 <?php } ?>
             <?php } ?>
         <?php } ?>
+        -->
+        
     </main>
+    
     
    
 </body>

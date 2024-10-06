@@ -240,6 +240,19 @@
     //Snack 4B: Filtrare il nostro array e mostrare, sempre suddivisi per classe, esclusivamente gli studenti e le studentesse con voto medio sufficiente.
 
 
+
+// if (isset($_GET["userGrade"])) {
+//     $filteredStudents = [];
+//     foreach ($classi as $singleClass => $listClass) {
+//         foreach  ($listClass as $itemClass => $student) {
+//             if($student["voto_medio"] <= $_GET["userGrade"]){
+//                 $filteredStudents = $student;
+//             }
+//         }
+//     } 
+// }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -265,17 +278,34 @@
         </form>
         <?php foreach  ($classi as $singleClass => $listClass) { ?>
             <h5> <?= $singleClass ?> </h5>
-            <?php foreach  ($listClass as $itemClass => $student) { ?>
-                <div class="card ms-3 mb-2" style="width: 18rem;">
-                    <div class="card-header">
-                        <p><?= "Nome :" . $student["nome"] ?> <?= $student["cognome"] ?></p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <p class="ms-3"><?= "Anni :" . $student["anni"] ?></p>
-                        <p class="ms-3"><?= "voto medio :" . $student["voto_medio"] ?></p>
-                        <p class="ms-3"><?= "Linguaggio preferito :" . $student["linguaggio_preferito"] ?></p>
-                    </ul>
-                </div>
+            <?php if (isset($_GET["userGrade"])) { ?>
+                <?php foreach  ($listClass as $itemClass => $student) { ?>
+                    <?php if ($student["voto_medio"] <= $_GET["userGrade"]) { ?>
+                        <div class="card ms-3 mb-2" style="width: 18rem;">
+                            <div class="card-header">
+                                <p><?= "Nome :" . $student["nome"] ?> <?= $student["cognome"] ?></p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <p class="ms-3"><?= "Anni :" . $student["anni"] ?></p>
+                                <p class="ms-3"><?= "voto medio :" . $student["voto_medio"] ?></p>
+                                <p class="ms-3"><?= "Linguaggio preferito :" . $student["linguaggio_preferito"] ?></p>
+                            </ul>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
+            <?php } else { ?>
+                <?php foreach  ($listClass as $itemClass => $student) { ?>
+                        <div class="card ms-3 mb-2" style="width: 18rem;">
+                            <div class="card-header">
+                                <p><?= "Nome :" . $student["nome"] ?> <?= $student["cognome"] ?></p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <p class="ms-3"><?= "Anni :" . $student["anni"] ?></p>
+                                <p class="ms-3"><?= "voto medio :" . $student["voto_medio"] ?></p>
+                                <p class="ms-3"><?= "Linguaggio preferito :" . $student["linguaggio_preferito"] ?></p>
+                            </ul>
+                        </div>
+                <?php } ?>
             <?php } ?>
         <?php } ?>
         <!--

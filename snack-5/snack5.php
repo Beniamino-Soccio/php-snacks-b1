@@ -1,3 +1,7 @@
+<?php 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +15,14 @@
     <main class="container">
         <div class="row justify-content-center">
             <div class="col-8">
-            <form>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">parola</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="otto">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                <form action="snack5.php" method="GET">
+                    <div class="mb-3">
+                        <label for="word" class="form-label">parola</label>
+                        <input type="text" class="form-control" id="word" name="word" placeholder="otto">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <?= ispalindrome($_GET["word"]) ?>
             </div>
         </div>
     </main>
